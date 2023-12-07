@@ -1,0 +1,7 @@
+<h1>Редактировать товар</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Просмотреть', @product %> |
+<%= link_to 'Удалить', @product, method: :delete, data: { confirm: 'Вы уверены?' } %> |
+<%= link_to 'Вернуться к списку', products_path %>

@@ -1,0 +1,30 @@
+<h1>Список заказов</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Имя клиента</th>
+      <th>Email клиента</th>
+      <th>Статус</th>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.customer_name %></td>
+        <td><%= order.email %></td>
+        <td><%= order.status %></td>
+        <td>
+          <%= link_to 'Просмотр', order %>
+          <%= link_to 'Редактировать', edit_order_path(order) %>
+          <%= link_to 'Удалить', order, method: :delete, data: { confirm: 'Вы уверены?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Создать новый заказ', new_order_path %>

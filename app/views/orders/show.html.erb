@@ -1,0 +1,32 @@
+<h1>Детали заказа</h1>
+
+<p><strong>ID:</strong> <%= @order.id %></p>
+<p><strong>Имя клиента:</strong> <%= @order.customer_name %></p>
+<p><strong>Email клиента:</strong> <%= @order.email %></p>
+<p><strong>Статус:</strong> <%= @order.status %></p>
+
+<h2>Позиции заказа</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Наименование товара</th>
+      <th>Количество</th>
+      <th>Цена за единицу</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order.order_items.each do |item| %>
+      <tr>
+        <td><%= item.product_name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.unit_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>Информация о клиенте</h2>
+<%# <p><strong>Адрес:</strong> <%= @order.customer_detail.address %></p> %>
+<%# <p><strong>Телефон:</strong> <%= @order.customer_detail.phone %></p> %>
+
+<%= link_to 'Назад к списку заказов', orders_path %>
