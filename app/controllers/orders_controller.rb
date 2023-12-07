@@ -18,9 +18,18 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
 
     if @order.save
+      OrderMailer.order_confirmation(@order).deliver_now
+
+      OrderMailer.order_confirmation(@order).deliver_now
       redirect_to @order, notice: 'Заказ успешно создан.'
     else
       render :new
+    end
+  end
+
+  def sample_email
+    mail(to: 'gritskevich.vladimi@gmail.com', subject: 'Test Email') do |format|
+      format.text { render plain: 'Hello, this is a test email!' }
     end
   end
 
